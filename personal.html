@@ -1,10 +1,11 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>My Profile</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 </head>
 <body>
 	<div class="container">
@@ -24,7 +25,7 @@
 			</div>
 		</nav>
 	</div>
-	<table class="table table-bordered">
+	<table class="table table-bordered" id="race-table">
 	    <thead>
 	      <tr>
 	        <th>Race Name</th>
@@ -46,22 +47,22 @@
 	  </table>
 	<h3>Input New Race Info</h3>
 	<!-- input form -->
-	<div class="race-form">
+	<form class="race-form">
 		<div class="form-group">
 			<label for="race">Race Name</label>
-			<input type="text" class="form-control" id="race">
+			<input type="text" class="form-control" id="race" required="true">
 		</div>
 		<div class="form-group">
 		  <label for="distance">Distance</label>
 		  <select class="form-control" id="distance">
 		  	<option>-</option>
-		    <option>5K</option>
-		    <option>10K</option>
-		    <option>10 Mile</option>
-		    <option>Half Marathon</option>
-		    <option>30K</option>
-		    <option>Marathon</option>
-		    <option>Other</option>
+		    <option value="5K">5K</option>
+		    <option value="10K">10K</option>
+		    <option value="10 Mile">10 Mile</option>
+		    <option value="Half Marathon">Half Marathon</option>
+		    <option value="30K">30K</option>
+		    <option value="Marathon">Marathon</option>
+		    <option value="needs-input">Other</option>
 		  </select>
 		</div>
 		<div class="form-group">
@@ -90,17 +91,18 @@
 		<p>Time</p>
 		<div class="form-group race-time">
 			<label for="hours">Hours</label>
-			<input type="number" id="hours">
+			<input type="number" id="hours" max="24">
 		</div>
 		<div class="form-group race-time">
 			<label for="minutes">Minutes</label>
-			<input type="number" id="minutes">
+			<input type="number" id="minutes" max="60">
 		</div>
 		<div class="form-group race-time">
 			<label for="seconds">Seconds</label>
-			<input type="number" id="seconds">
+			<input type="number" id="seconds" max="60">
 		</div>
-	</div>
+		<input type="submit" value="submit" class="btn btn-success" id="add-race">
+	</form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src='assets/javascript/app.js'></script>
